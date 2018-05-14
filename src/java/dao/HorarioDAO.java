@@ -11,35 +11,35 @@ import util.HibernateUtil;
 public class HorarioDAO {
 
     public static void gravarHorario(Horario horario) throws SQLException, ClassNotFoundException {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(horario);
         transaction.commit();
     }
 
     public static void excluirHorario(Horario horario) throws SQLException, ClassNotFoundException {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.delete(horario);
         transaction.commit();
     }
 
     public static List<Horario> obterHorarios() throws ClassNotFoundException, SQLException {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         List<Horario> horarios = session.createCriteria(Professor.class).list();
         return horarios;
     }
     
     public static List<Horario> obterHorariosPorTurma(int codTurma) throws ClassNotFoundException, SQLException {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         List<Horario> horarios = session.createQuery("from Horario where codTurma="+codTurma).list();
         return horarios;
     }
 
     public static void editarHorario(Horario horario) throws SQLException, ClassNotFoundException {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.update(horario);
         transaction.commit();

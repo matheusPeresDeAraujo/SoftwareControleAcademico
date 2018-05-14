@@ -18,7 +18,7 @@ import util.HibernateUtil;
 
 public class AlunoDao {
     public static List<Aluno> obterAlunos() throws ClassNotFoundException, SQLException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.clear();
         List<Aluno> alunos = session.createCriteria(Aluno.class).list();
@@ -26,7 +26,7 @@ public class AlunoDao {
     }
     
     public static List<Aluno> obterAlunosPorNome(String nome) throws ClassNotFoundException, SQLException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.clear();
         List<Aluno> alunos = session.createQuery(
@@ -35,7 +35,7 @@ public class AlunoDao {
     }
     
     public static Aluno obterAluno(int matricula) throws ClassNotFoundException, SQLException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.clear();
         Aluno aluno = (Aluno) session.load(Aluno.class, matricula);
@@ -44,7 +44,7 @@ public class AlunoDao {
     }
     
     public static void gravarAluno(Aluno aluno) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.clear();
         session.save(aluno);
@@ -52,7 +52,7 @@ public class AlunoDao {
     }
     
     public static void editarAluno(Aluno aluno) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.clear();
         session.update(aluno);
@@ -60,7 +60,7 @@ public class AlunoDao {
     }
     
     public static void excluirAluno(Aluno aluno) throws SQLException, ClassNotFoundException{
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.clear();
         session.delete(aluno);
