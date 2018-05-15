@@ -25,7 +25,7 @@
         </td>
         </tr>
         <tr>
-        <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA')}"> hidden</c:if>>
+        <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA') && !sessionScope.credencial.acesso.equals('ALUNO')}"> hidden</c:if>>
             <a href="PesquisarAlunoController">Manter Alunos</a>
         </td>
         </tr>
@@ -34,7 +34,6 @@
             <a href="PesquisarTurmaController">Manter Turmas</a><br/>
         </td>
         </tr>
-        ---<br/>
         <tr>
         <td <c:if test="${!sessionScope.credencial.acesso.equals('ALUNO')}"> hidden</c:if>>
             <a href="PesquisarMatrizCurricularController?acao=prepararOperacao">Consultar Matriz Curricular</a>
@@ -47,17 +46,44 @@
         </tr>
         <tr>
         <td <c:if test="${!sessionScope.credencial.acesso.equals('PROFESSOR')}"> hidden</c:if>>
-            <a href="PesquisarNotaFrequenciaController?acao=prepararOperacao"> Manter Nota e Frequência</a> <br />
+            <a href="PesquisarNotaFrequenciaController?acao=prepararOperacao"> Manter Nota e Frequência</a>
         </td>
         </tr>
-        <a href=""> Calcular Resultado de Rendimento do Aluno</a> <br />
-        --- Relatórios ---<br/>
-        <a href="ReatorioCursosController?acao=prepararOperacao">Relatório de Cursos</a></br>
-        <a href="RelatorioProfessorController?acao=prepararOperacao">Relatório de Professores Por Titulação</a></br>
-        <a href="RelatorioDisciplinaPorCursoController?acao=prepararOperacao">Relatório de Disciplina Por Cursos</a></br>
-        <a href="RelatorioAlunoAnoSemestreController?acao=prepararOperacao">Relatório de Aluno Ano/Semestre</a></br>
-        <a href="RelatorioDiarioDeClasseController?acao=prepararOperacao">Diário de Classe</a></br>
-        <a href="ReatorioHistoricoAlunoController?acao=prepararOperacao">Historico</a></br>
+        <tr>
+        <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA')}"> hidden</c:if>>
+            <a href=""> Calcular Resultado de Rendimento do Aluno</a>
+        </td>
+        </tr>
+        <tr>
+        <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA')}"> hidden</c:if>>
+            <a href="ReatorioCursosController?acao=prepararOperacao">Relatório de Cursos</a>
+        </td>
+        </tr>
+        <tr>
+        <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA')}"> hidden</c:if>>
+            <a href="RelatorioProfessorController?acao=prepararOperacao">Relatório de Professores Por Titulação</a>
+        </td>
+        </tr>
+        <tr>
+        <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA')}"> hidden</c:if>>
+            <a href="RelatorioDisciplinaPorCursoController?acao=prepararOperacao">Relatório de Disciplina Por Cursos</a>
+        </td>
+        </tr>
+        <tr>
+        <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA')}"> hidden</c:if>>
+            <a href="RelatorioAlunoAnoSemestreController?acao=prepararOperacao">Relatório de Aluno Ano/Semestre</a>
+        </td>
+        </tr>
+        <tr>
+        <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA')}"> hidden</c:if>>
+            <a href="RelatorioDiarioDeClasseController?acao=prepararOperacao">Diário de Classe</a>
+        </td>
+        </tr>
+        <tr>
+        <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA')}"> hidden</c:if>>
+            <a href="ReatorioHistoricoAlunoController?acao=prepararOperacao">Historico</a>
+        </td>
+        </tr>
         </table>
     </body>
 </html>

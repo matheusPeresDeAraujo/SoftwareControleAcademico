@@ -20,9 +20,9 @@
                             <tr>
                                 <td><c:out value="${aluno.matricula}" /></td>
                                 <td><c:out value="${aluno.nome}" /></td>
-                                <td><a href="ManterAlunoController?acao=prepararOperacao&operacao=Editar&matricula=<c:out value="${aluno.matricula}"/>">Consultar</a></td>
-                                <td><a href="ManterAlunoController?acao=prepararOperacao&operacao=Editar&matricula=<c:out value="${aluno.matricula}"/>">Editar</a></td>
-                                <td><a href="ManterAlunoController?acao=prepararOperacao&operacao=Excluir&matricula=<c:out value="${aluno.matricula}"/>">Excluir</a></td>
+                                <td <c:if test="${sessionScope.credencial.acesso.equals('ALUNO')}"> hidden</c:if>><a href="ManterAlunoController?acao=prepararOperacao&operacao=Editar&matricula=<c:out value="${aluno.matricula}"/>">Consultar</a></td>
+                                <td <c:if test="${sessionScope.credencial.acesso.equals('ALUNO')}"> hidden</c:if>><a href="ManterAlunoController?acao=prepararOperacao&operacao=Editar&matricula=<c:out value="${aluno.matricula}"/>">Editar</a></td>
+                                <td <c:if test="${sessionScope.credencial.acesso.equals('ALUNO')}"> hidden</c:if>><a href="ManterAlunoController?acao=prepararOperacao&operacao=Excluir&matricula=<c:out value="${aluno.matricula}"/>">Excluir</a></td>
                                 <td><a href="ManterMatriculaController?acao=prepararOperacao&operacao=Incluir&matricula=<c:out value="${aluno.matricula}"/>">Matricular</a></td>
                                 <td><a href="ConsultarNotaFrequenciaController?acao=prepararOperacao&matricula=<c:out value="${aluno.matricula}"/>">Consultar Nota e Frequecia</a></td>
                             </tr>
