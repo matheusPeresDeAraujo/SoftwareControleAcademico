@@ -16,13 +16,15 @@ public class Credencial implements java.io.Serializable {
     private int codUsuario;
     private String usuario;
     private String senha;
+    private String acesso;
 
     public Credencial() {
     }
 
-    public Credencial(String nome, String senha) {
+    public Credencial(String nome, String senha, String acesso) {
         this.usuario = nome;
         this.senha = senha;
+        this.acesso = acesso;
     }
 
     @Id
@@ -50,6 +52,14 @@ public class Credencial implements java.io.Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getAcesso() {
+        return acesso;
+    }
+
+    public void setAcesso(String acesso) {
+        this.acesso = acesso;
     }
 
     @Override

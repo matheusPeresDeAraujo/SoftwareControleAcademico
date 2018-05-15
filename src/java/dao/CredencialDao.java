@@ -28,6 +28,7 @@ public class CredencialDao {
 				usuRetorno.setCodUsuario(resultado.getInt("codusuario"));
 				usuRetorno.setUsuario(resultado.getString("usuario"));
 				usuRetorno.setSenha(resultado.getString("senha"));
+                                usuRetorno.setAcesso(resultado.getString("acesso"));
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro de SQL:" + e.getMessage());
