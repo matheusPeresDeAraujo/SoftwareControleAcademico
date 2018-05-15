@@ -55,6 +55,11 @@
                     </td>
                     <td>
                         <input type="text" name="txtNota2" value="${avaliacao.nota2}"/>
+                    </td><td>
+                        Nota 03:
+                    </td>
+                    <td>
+                        <input type="text" name="txtNota3" value="${avaliacao.nota3}"/>
                     </td>
                 </tr>
                 <tr>
