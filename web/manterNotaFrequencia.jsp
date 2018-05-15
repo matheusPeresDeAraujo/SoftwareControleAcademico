@@ -31,7 +31,7 @@
 
         <table border>
             <tr>
-                <td>MATRÍCULA</td><td>NOME DO ALUNO</td><td>FALTAS</td><td>NOTA 1</td><td>NOTA 2</td><td>PROVA FINAL</td><td>MEDIA</td><td>NOTA FINAL</td><td>RESULTADO FINAL</td><td>AÇÃO</td>
+                <td>MATRÍCULA</td><td>NOME DO ALUNO</td><td>FALTAS</td><td>NOTA 1</td><td>NOTA 2</td><td>NOTA 3</td><td>PROVA FINAL</td><td>MEDIA</td><td>NOTA FINAL</td><td>RESULTADO FINAL</td><td>AÇÃO</td>
             </tr>
             <c:forEach items="${avaliacoes}" var="avaliacao">
                 <tr>
@@ -40,18 +40,19 @@
                     <td>${avaliacao.numFaltas}</td>
                     <td>${avaliacao.nota1}</td>
                     <td>${avaliacao.nota2}</td>
+                    <td>${avaliacao.nota3}</td>
                     <td>${avaliacao.notaProvaFinal}</td>
                     <td>${(avaliacao.nota1 + avaliacao.nota2)/2}</td>
                     <td>
-                        <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) ge avaliacao.notaProvaFinal}">${((avaliacao.nota1 + avaliacao.nota2)/2)}</c:if>
-                        <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) < avaliacao.notaProvaFinal}">60</c:if>
+                        <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) ge avaliacao.notaProvaFinal}">${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3)}</c:if>
+                        <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) < avaliacao.notaProvaFinal}">60</c:if>
                         </td>
                         <td>
                         <c:if test="${not empty(avaliacao.nota1) and not empty(avaliacao.nota2)}">    
                             <c:if test="${avaliacao.notaProvaFinal eq 0 or empty(avaliacao.notaProvaFinal)}">
-                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) ge 60}">APROVADO</c:if>
-                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) < 40}">REPROVADO</c:if>
-                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2)/2) < 60 and ((avaliacao.nota1 + avaliacao.nota2)/2) ge 40}">PROVA FINAL</c:if>
+                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) ge 60}">APROVADO</c:if>
+                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) < 40}">REPROVADO</c:if>
+                                <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) < 60 and ((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) ge 40}">PROVA FINAL</c:if>
                             </c:if>
                             <c:if test="${avaliacao.notaProvaFinal > 0}">
                                 <c:if test="${avaliacao.notaProvaFinal ge 60}">APROVADO</c:if>
