@@ -42,7 +42,7 @@
                     <td>${avaliacao.nota2}</td>
                     <td>${avaliacao.nota3}</td>
                     <td>${avaliacao.notaProvaFinal}</td>
-                    <td>${(avaliacao.nota1 + avaliacao.nota2)/2}</td>
+                    <td>${(avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3}</td>
                     <td>
                         <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) ge avaliacao.notaProvaFinal}">${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3)}</c:if>
                         <c:if test="${((avaliacao.nota1 + avaliacao.nota2 + avaliacao.nota3)/3) < avaliacao.notaProvaFinal}">60</c:if>
