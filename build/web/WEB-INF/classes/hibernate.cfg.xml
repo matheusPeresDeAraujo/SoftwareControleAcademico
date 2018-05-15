@@ -20,5 +20,6 @@
     <mapping class="model.Curso"/>
     <mapping class="model.Turma"/>
     <mapping class="model.Avaliacao"/>
+    <mapping class="model.Credencial"/>
   </session-factory>
 </hibernate-configuration>
