@@ -49,4 +49,129 @@ public class TurmaDAO {
         session.close();
         return turmas;
     }
+    
+    public static List<Turma> obterTurmasPorCurso(int codCurso){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.disciplina.curso.codCurso="+codCurso).list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorAno(Integer ano){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma where ano="+ano).list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorNome(String nome){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.disciplina.nome like '%"+nome+"%'").list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorSemestre(Integer semestre){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma where semestre ="+semestre).list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorSemestreNome(Integer semestre, String nome){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.semestre ="+semestre+" and t.disciplina.nome like '%"+nome+"%'").list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorAnoNome(Integer ano, String nome){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.ano ="+ano+" and t.disciplina.nome like '%"+nome+"%'").list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorAnoSemestre(Integer ano, Integer semestre){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.ano ="+ano+" and t.semestre ="
+                +semestre).list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorAnoSemestreNome(Integer ano, Integer semestre, String nome){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.ano ="+ano+" and t.semestre ="
+                +semestre+" and t.disciplina.nome like '%"+nome+"%'").list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorCursoNome(Integer curso, String nome){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.disciplina.curso.codCurso ="
+                +curso+" and t.disciplina.nome like '%"+nome+"%'").list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorCursoSemestre(Integer curso, Integer semestre){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.disciplina.curso.codCurso ="+curso+" and t.semestre ="+semestre).list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorCursoSemestreNome(Integer curso, Integer semestre, String nome){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.disciplina.curso.codCurso ="+curso+" and t.semestre ="+semestre+" and t.disciplina.nome like '%"+nome+"%'").list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorCursoAno(Integer curso, Integer ano){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.disciplina.curso.codCurso ="+curso+" and t.ano ="+ano).list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorCursoAnoNome(Integer curso, Integer ano, String nome){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.disciplina.curso.codCurso ="+curso+"  and t.ano ="+ano+" and t.disciplina.nome like '%"+nome+"%'").list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorCursoAnoSemestre(Integer curso, Integer ano, Integer semestre){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.disciplina.curso.codCurso ="+curso+"  and t.ano ="+ano+" and t.semestre ="+semestre).list();
+        session.close();
+        return turmas;
+    }
+    
+    public static List<Turma> obterTurmasPorCursoAnoSemestreNome(Integer curso, Integer ano, Integer semestre, String nome){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Turma> turmas = session.createQuery("from Turma t where t.disciplina.curso.codCurso ="+curso+"  and t.ano ="+ano+"  and t.semestre ="+semestre+" and t.disciplina.nome like '%"+nome+"%'").list();
+        session.close();
+        return turmas;
+    }
+    
+    
 }

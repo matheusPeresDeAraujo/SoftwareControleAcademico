@@ -18,10 +18,91 @@ public class PesquisarTurmaController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
         try {
-            request.setAttribute("turmas", Turma.obterTurmas());
-            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
-            request.setAttribute("cursos", Curso.obterCursos());
+            
+            int filtro = Integer.parseInt(request.getParameter("filtro"));
+           
+            if( filtro==1){
+                int curso = Integer.parseInt(request.getParameter("curso"));
+                String nomeDisciplina = request.getParameter("disciplina");
+                int ano = Integer.parseInt(request.getParameter("ano"));
+                int semestre = Integer.parseInt(request.getParameter("optSemestre"));
+                
+                if((curso == 0) && (ano == 0) && (semestre == 0) && (nomeDisciplina == null || nomeDisciplina.equals(""))){
+                    //Busca sem filtros
+                    request.setAttribute("turmas", Turma.obterTurmas());
+                    
+                }else if((curso == 0) && (ano == 0) && (semestre == 0) && (nomeDisciplina != null && !nomeDisciplina.equals(""))){
+                    //Busca apenas pelo nome
+                    request.setAttribute("turmas", Turma.obterTurmasPorNome(nomeDisciplina));
+                    
+                }else if((curso == 0) && (ano == 0) && (semestre != 0) && (nomeDisciplina == null || nomeDisciplina.equals(""))){
+                    //Busca apenas pelo semestre
+                    request.setAttribute("turmas", Turma.obterTurmasPorSemestre(semestre));
+                    
+                }else if((curso == 0) && (ano == 0) && (semestre != 0) && (nomeDisciplina != null || !nomeDisciplina.equals(""))){
+                    //Busca pelo semestre e nome
+                    request.setAttribute("turmas", Turma.obterTurmasPorSemestreNome(semestre, nomeDisciplina));
+                    
+                }else if((curso == 0) && (ano != 0) && (semestre == 0) && (nomeDisciplina == null || nomeDisciplina.equals(""))){
+                    //Busca somente pelo ano
+                    request.setAttribute("turmas", Turma.obterTurmasPorAno(ano));
+                    
+                }else if((curso == 0) && (ano != 0) && (semestre == 0) && (nomeDisciplina != null || !nomeDisciplina.equals(""))){
+                    //Busca pelo ano e nome
+                    request.setAttribute("turmas", Turma.obterTurmasPorAnoNome(ano, nomeDisciplina));
+                    
+                }else if((curso == 0) && (ano != 0) && (semestre != 0) && (nomeDisciplina == null || nomeDisciplina.equals(""))){
+                    //Busca pelo ano e semestre
+                    request.setAttribute("turmas", Turma.obterTurmasPorAnoSemestre(ano, semestre));
+                    
+                }else if((curso == 0) && (ano != 0) && (semestre != 0) && (nomeDisciplina != null || !nomeDisciplina.equals(""))){
+                    //Busca pelo ano, semestre e nome
+                    request.setAttribute("turmas", Turma.obterTurmasPorAnoSemestreNome(ano, semestre, nomeDisciplina));
+                    
+                }else if((curso != 0) && (ano == 0) && (semestre == 0) && (nomeDisciplina == null || nomeDisciplina.equals(""))){
+                    //Busca apenas pelo curso
+                    request.setAttribute("turmas", Turma.obterTurmasPorCurso(curso));
+                    
+                }else if((curso != 0) && (ano == 0) && (semestre == 0) && (nomeDisciplina != null || !nomeDisciplina.equals(""))){
+                    //Busca pelo curso e nome
+                    request.setAttribute("turmas", Turma.obterTurmasPorCursoNome(curso, nomeDisciplina));
+                    
+                }else if((curso != 0) && (ano == 0) && (semestre != 0) && (nomeDisciplina == null || nomeDisciplina.equals(""))){
+                    //Busca pelo curso e semestre
+                    request.setAttribute("turmas", Turma.obterTurmasPorCursoSemestre(curso, semestre));
+                    
+                }else if((curso != 0) && (ano == 0) && (semestre != 0) && (nomeDisciplina != null || !nomeDisciplina.equals(""))){
+                    //Busca pelo curso, semestre e nome
+                    request.setAttribute("turmas", Turma.obterTurmasPorCursoSemestreNome(curso, semestre, nomeDisciplina));
+                    
+                }else if((curso != 0) && (ano != 0) && (semestre == 0) && (nomeDisciplina == null || nomeDisciplina.equals(""))){
+                    //Busca pelo curso e ano
+                    request.setAttribute("turmas", Turma.obterTurmasPorCursoAno(curso, ano));
+                    
+                }else if((curso != 0) && (ano != 0) && (semestre == 0) && (nomeDisciplina != null || !nomeDisciplina.equals(""))){
+                    //Busca pelo curso, ano e nome
+                    request.setAttribute("turmas", Turma.obterTurmasPorCursoAnoNome(curso, ano, nomeDisciplina));
+                    
+                }else if((curso != 0) && (ano != 0) && (semestre != 0) && (nomeDisciplina == null || nomeDisciplina.equals(""))){
+                    //Busca pelo curso, ano e semestre
+                    request.setAttribute("turmas", Turma.obterTurmasPorCursoAnoSemestre(curso, ano, semestre));
+                    
+                }else{
+                    //Busca utilizando todos os filtros
+                    request.setAttribute("turmas", Turma.obterTurmasPorCursoAnoSemestreNome(curso, ano, semestre, nomeDisciplina));
+                    
+                }
+                
+                request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
+                request.setAttribute("cursos", Curso.obterCursos());
+                
+            }else{
+                request.setAttribute("turmas", Turma.obterTurmas());
+                request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
+                request.setAttribute("cursos", Curso.obterCursos());
+            }
             RequestDispatcher janela = request.getRequestDispatcher("/pesquisarTurma.jsp");
             janela.forward(request, response);
         } catch (ClassNotFoundException e) {

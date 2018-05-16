@@ -9,39 +9,41 @@
     </head>
     <body>
         <h1>PESQUISAR TURMA</h1>
-        <form>
+        <form action="PesquisarTurmaController?filtro=1" method="post">
             <table>
                 <tr>
                     <td>Curso:</td>
                     <td>
-                        <select name="optCurso">
-                            <option value="0" selected>Todos os Cursos</option>
-                            <c:forEach items="${cursos}" var="curso">
-                                <option value="${curso.codCurso}">${curso.nome}</option>
-                            </c:forEach>
+                        <select id="curso" name="curso">
+                                <option value="0" selected>Todos</option>
+                                <c:forEach items="${cursos}" var="curso">
+                                    <option value="${curso.codCurso}" <c:if test="${cursoFiltro==curso.codCurso}">selected</c:if>>
+                                        ${curso.nome}
+                                    </option>
+                                </c:forEach>
                         </select>
                     </td>
                     <td>Ano:</td>
                     <td>
                         <jsp:useBean id="data" class="java.util.Date"/>  
                         <select name="ano" >  
-                                <option value="0" selected>Todos</option>
+                                <option name="ano" value="0" selected>Todos</option>
                             <c:forEach var="cont" begin="2006" end="${data.year + 1900}">  
-                                <option value="<c:out value="${cont}"/>"><c:out value="${cont}"/></option>  
+                                <option name="ano" value="<c:out value="${cont}"/>"><c:out value="${cont}"/></option>  
                             </c:forEach>  
                         </select>   
                     </td>
                     <td>Semestre:</td>
                     <td>
                         <select name="optSemestre">
-                            <option value="0" selected>Todos</option>
-                            <option value="1" selected>1</option>
-                            <option value="2" selected>2</option>
+                            <option name="optSemestre" value="0" selected>Todos</option>
+                            <option name="optSemestre" value="1" >1</option>
+                            <option name="optSemestre" value="2" >2</option>
                            
                          </select>
                     </td>
-                    <td>Nome da Disciplina:</td><td><input type="text" nome="txtDisciplina"></td>
-                    <td><input type="button" value="Pesquisar"></td>
+                    <td>Nome da Disciplina:</td><td><input type="text" id="nomeDisciplina" name="disciplina" value="${nomeFiltro}"</td>
+                    <td><input type="submit" value="Pesquisar"></td>
                 </tr>
             </table>
         </form>

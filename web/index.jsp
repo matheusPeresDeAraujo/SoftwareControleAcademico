@@ -31,7 +31,7 @@
         </tr>
         <tr>
         <td <c:if test="${!sessionScope.credencial.acesso.equals('SECRETARIA')}"> hidden</c:if>>
-            <a href="PesquisarTurmaController">Manter Turmas</a><br/>
+            <a href="PesquisarTurmaController?filtro=0">Manter Turmas</a>
         </td>
         </tr>
         <tr>

@@ -143,6 +143,66 @@ public class Turma implements java.io.Serializable {
     public static Turma obterTurma(int codTurma) throws ClassNotFoundException, SQLException {
         return TurmaDAO.obterTurma(codTurma);
     }
+    
+    public static List<Turma> obterTurmasPorCurso(int codCurso) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorCurso(codCurso);
+    }
+    
+    public static List<Turma> obterTurmasPorAno(int ano) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorAno(ano);
+    }
+    
+    public static List<Turma> obterTurmasPorNome(String nome) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorNome(nome);
+    }
+    
+    public static List<Turma> obterTurmasPorSemestre(int semestre) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorSemestre(semestre);
+    }
+    
+    public static List<Turma> obterTurmasPorSemestreNome(int semestre, String nome) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorSemestreNome(semestre, nome);
+    }
+    
+    public static List<Turma> obterTurmasPorAnoNome(int ano, String nome) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorAnoNome(ano, nome);
+    }
+    
+    public static List<Turma> obterTurmasPorAnoSemestre(int ano, int semestre) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorAnoSemestre(ano, semestre);
+    }
+    
+    public static List<Turma> obterTurmasPorAnoSemestreNome(int ano, int semestre, String nome) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorAnoSemestreNome(ano, semestre, nome);
+    }
+    
+    public static List<Turma> obterTurmasPorCursoNome(int curso, String nome) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorCursoNome(curso, nome);
+    }
+    
+    public static List<Turma> obterTurmasPorCursoSemestre(int curso, int semestre) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorCursoSemestre(curso, semestre);
+    }
+    
+    public static List<Turma> obterTurmasPorCursoSemestreNome(int curso, int semestre, String nome) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorCursoSemestreNome(curso, semestre, nome);
+    }
+
+    public static List<Turma> obterTurmasPorCursoAno(int curso, int ano) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorCursoAno(curso, ano);
+    }
+
+    public static List<Turma> obterTurmasPorCursoAnoNome(int curso, int ano, String nome) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorCursoAnoNome(curso, ano, nome);
+    }
+
+    public static List<Turma> obterTurmasPorCursoAnoSemestre(int curso, int ano, int semestre) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorCursoAnoSemestre(curso, ano, semestre);
+    }
+
+    public static List<Turma> obterTurmasPorCursoAnoSemestreNome(int curso, int ano, int semestre, String nome) throws ClassNotFoundException, SQLException {
+        return TurmaDAO.obterTurmasPorCursoAnoSemestreNome(curso, ano, semestre, nome);
+    }
 
     public void setCodTurma(int codTurma) {
         this.codTurma = codTurma;
