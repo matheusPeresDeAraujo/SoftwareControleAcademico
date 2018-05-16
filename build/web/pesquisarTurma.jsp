@@ -15,9 +15,7 @@
                     <td>Curso:</td>
                     <td>
                         <select id="curso" name="curso">
-                                <option value="0" selected>
-                                    Todos
-                                </option>
+                                <option value="0" selected>Todos</option>
                                 <c:forEach items="${cursos}" var="curso">
                                     <option value="${curso.codCurso}" <c:if test="${cursoFiltro==curso.codCurso}">selected</c:if>>
                                         ${curso.nome}
